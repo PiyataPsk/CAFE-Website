@@ -1,0 +1,47 @@
+<%-include('header.ejs')%>
+<%-include('navbar-admin.ejs') %>
+<div class="container  d-flex justify-content-center ">
+    <div style="width: 100%;">
+
+
+        <div class="d-flex justify-content-center">
+            <form class="border border-dark-subtle rounded p-3  mt-4" action="/update/products" method="post" enctype="multipart/form-data">
+                <label class="mb-4" >Product ID</label><br>
+                <input class="mb-4" type="text" name="id"><br>
+                <label class="mb-4" >Menu Name</label>
+                <input class="mb-4" type="text" name="name"><br>
+                <div class="mb-3">
+                    <label for="formFileSm" class="form-label mt-3">เพิ่ม รูปภาพ</label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="image">
+                </div>
+                <label class="mb-4" >Price</label>
+                <input class="mb-4" type="text" name="price"><br>
+                <label class="mb-4" >Sweet</label>
+                <input class="mb-4" type="text" name="sweet"><br>
+                <input class="btn btn-primary" type="submit" value="update">
+            </form>
+        </div>
+
+        <div class="container">
+            <div class="row mt-4">
+                <% Object.values(products).forEach(function(item){%>
+                    <div class="col-lg-4 col-md-6 mb-4 mt-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top" src="./image/<%=item.image%>" alt="img"></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                <h5>Product ID <%=item._id%></h5>
+                                <a href="#"><%=item.name%></a>
+                                </h4>
+                                <h5>price <%=item.price%> Bath</h5>
+                                <p class="card-text">sweet <%=item.sweet%></p>
+                            </div>    
+                        </div> 
+                    </div>
+                <%})%>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<%-include('footer.ejs') %>
